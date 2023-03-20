@@ -1,0 +1,42 @@
+---
+DATASETS:
+  - NAME: VirtualCMB
+    ROOT: /home/torresva/mnt/VirtualCMB/
+    INFO_CSV: ./data/VirtualCMB_info.csv
+    PATCH_SIZE:
+      blur: !!python/tuple [240, 320]
+      deblur: !!python/tuple [144, 256]
+
+  - NAME: RealCMB
+    ROOT: /home/torresva/mnt/RealCMB/
+    INFO_CSV: ./data/RealCMB_info.csv
+    PATCH_SIZE:
+      blur: null
+      deblur: !!python/tuple [128, 96]
+
+RESULTS_DIR: /home/torresva/mnt/results
+DEVICE: cuda:0
+
+DEBLUR:
+  SIREN:
+    hidden_features: 192
+    hidden_layers: 4
+    fourier_scale: null
+  FOURIER_MAPPED_MLP:
+    hidden_features: 448
+    hidden_layers: 4
+    fourier_scale: 5
+  nn_model: SIREN
+  num_epochs: 400
+  lr: 0.0005
+  scheduler_eta_min: 0.000005
+  clip_grad: true
+  gradient_fn: net_grad
+  gradient_weight: 0.000008
+  p_norm: 1
+
+PARALLAX_ICB_MODEL:
+  blur_diff: 1
+  sigma: 4.0
+
+...

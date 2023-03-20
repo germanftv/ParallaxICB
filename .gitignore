@@ -1,0 +1,8 @@
+tmp/
+results/
+**/__pycache__
+**.csv
+tmp_**
+**/logs*/*
+.idea/
+.vscode/
