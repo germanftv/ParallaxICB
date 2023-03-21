@@ -14,7 +14,7 @@ DATASETS:
       blur: null
       deblur: !!python/tuple [128, 96]
 
-RESULTS_DIR: /home/torresva/mnt/results
+RESULTS_DIR: ./results
 DEVICE: cuda:0
 
 DEBLUR:

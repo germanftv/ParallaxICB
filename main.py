@@ -7,7 +7,6 @@ import numpy as np
 import pandas as pd
 from torch.utils.data import DataLoader
 
-
 from data import dataset_fitting_dict
 from modules import blur_model_dict
 from modules.blur import blur_formation_eval
@@ -15,6 +14,8 @@ from configs.utils import get_dataset_info, read_config
 from modules.utils import imsave, save_error_image, float_or_bool
 from modules.deblur import deblurring
 
+if torch.cuda.is_available():
+    torch.cuda.empty_cache()
 
 def parser_fn(argv):
     """Parse command line arguments."""
@@ -207,8 +208,6 @@ def main(argv=None):
     args = parser_fn(argv)
     # Read config
     CONFIG = read_config(args.config, args)
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
     # Run experiment
     est, gt, perf, img_exp_data, df = globals()[args.command](CONFIG, args)
     # Save images

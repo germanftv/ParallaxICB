@@ -15,8 +15,21 @@ def parser_fn(argv):
     """Parse arguments"""
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, default='./configs/config.yaml', help='Path to config file')
+    parser.add_argument("--merge_ckpts", type=str, default=None, help='Merge ckpts from downloaded folder to results folder')
     args = parser.parse_args(argv)
     return args
+
+
+def merge_ckpts(df, dataset, downloaded_folder, results_folder):
+    """Merge ckpts from downloaded folder to results folder"""
+    models = ['ICB', 'PWB']
+    for model in models:
+        for img_exp in df['img_exp'].values:
+            src_file = os.path.join(downloaded_folder, 'deblur', dataset, model, 'ckpt', '{}.pth'.format(img_exp))
+            dst_file = os.path.join(results_folder, 'deblur', dataset, model, 'ckpt', '{}.pth'.format(img_exp))
+            os.makedirs(os.path.dirname(dst_file), exist_ok=True)
+            # move file
+            os.system('mv {} {}'.format(src_file, dst_file))
 
 
 def virtualCMB_info(dataset_info):
@@ -92,6 +105,15 @@ def main(argv=None):
         df.to_csv(dataset_info.INFO_CSV, index=False)
         print('Dataframe successfully saved in: {} ({} images)'.format(dataset_info.INFO_CSV, len(df)))
 
+        if args.merge_ckpts is not None:
+            downloaded_folder = args.merge_ckpts
+            results_folder = CONFIG['RESULTS_DIR']
+            merge_ckpts(df, dataset, downloaded_folder, results_folder)
+            print('Ckpts for {} successfully merged from {} to {}'.format(dataset, downloaded_folder, results_folder))
+
+    if args.merge_ckpts is not None:
+        # Remove recursive downloaded folder
+        os.system('rm -rf {}'.format(downloaded_folder))
 
 if __name__ == '__main__':
     main()
