@@ -1,11 +1,11 @@
 #  Depth-Aware Image Compositing Model for Parallax Camera Motion Blur
 
-## [Project Page]() | [arXiv](https://arxiv.org/abs/2303.09334) 
+## [Project Page](https://germanftv.github.io/ParallaxICB.github.io/) | [arXiv](https://arxiv.org/abs/2303.09334) 
 
-[![Project Page](https://img.shields.io/badge/Project%20Page-ParallaxICB-blue)]()
+[![Project Page](https://img.shields.io/badge/Project%20Page-ParallaxICB-blue)](https://germanftv.github.io/ParallaxICB.github.io/)
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2303.09334)
 
-### [German F. Torres]() and [Joni Kämäräinen](https://webpages.tuni.fi/vision/public_pages/JoniKamarainen/index.html)
+### [German F. Torres](https://germanftv.github.io/) and [Joni Kämäräinen](https://webpages.tuni.fi/vision/public_pages/JoniKamarainen/index.html)
 
 ---
 
@@ -45,8 +45,8 @@ This repository is built in PyTorch 1.13.0 and tested on Ubuntu 20.04 environmen
 
 ### 2. Datasets
 Download and unzip datasets:
-* [VirtualCMB]()
-* [RealCMB]()
+* [VirtualCMB](https://zenodo.org/record/7746117#.ZCUmCI5BxhE)
+* [RealCMB](https://zenodo.org/record/7745713#.ZCUlvo5BxhE)
 
 ### 3. Configuration file: [`./configs/config.yaml`](./configs/config.yaml)
 * Change the root directories ([VirtualCMB](/configs/config.yaml?plain=1L4) and [RealCMB](/configs/config.yaml?plain=1L11)) to the paths where the datasets have been downloaded. 
@@ -83,17 +83,24 @@ For instance:
 >```
 >python main.py deblur --dataset VirtualCMB --model ICB --id 0 --load_nn_model
 >```
->Make sure to run the **optional** step in our [Geeting Started](#getting-started) in advance.
+>Make sure to run, in advance, the **optional** step in our [Geeting Started](#getting-started).
+
+---
+## Summary report
+A summary report for all the images in the corresponding dataset can be generated with the command:
+```
+python summary.py $CMD --dataset $DATASET --model $BLUR_MODEL 
+```
+where `$CMD`, `$DATASET`, and `$BLUR_MODEL` denote the same variables as in `main.py`
 
 ---
 ## Citation
 If you find our work useful in your research, please cite:
 
-    @article{torres2023parallaxicb,
+    @inproceedings{torres2023parallaxicb,
         author = {Torres, German F. and Kämäräinen, Joni-Kristian},
         title = {Depth-Aware Image Compositing Model for Parallax Camera Motion Blur},
-        journal = {arXiv preprint arXiv:2303.09334},  
-        year = {2023},
-        url = {https://arxiv.org/abs/2303.09334},
-        doi = {10.48550/ARXIV.2303.09334},
+        booktitle = {Proceedings of the 22nd Scandinavian Conference on Image Analysis (SCIA)},
+        month = {April},
+        year = {2023}
     }

@@ -5,7 +5,7 @@ import argparse
 import pandas as pd
 import numpy as np
 
-from configs.utils import read_config, get_dataset_info
+from configs.utils import read_config, get_dataset_info, assign
 from modules.utils import search_with_pattern
 
 pd.set_option('display.float_format', lambda x: '%.3e' % x)
@@ -160,6 +160,7 @@ summary_dict = {
 def main(argv=None):
     args = parser_fn(argv)
     CONFIG = read_config(args.config)
+    CONFIG['RESULTS_DIR'] = assign(args.results_dir, CONFIG['RESULTS_DIR'])
     df_logs = read_logs(CONFIG, args)
     summary = summary_dict[args.dataset]
     summary(df_logs)
