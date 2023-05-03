@@ -1,8 +1,9 @@
 #  Depth-Aware Image Compositing Model for Parallax Camera Motion Blur
 
-## [Project Page](https://germanftv.github.io/ParallaxICB.github.io/) | [arXiv](https://arxiv.org/abs/2303.09334) 
+## [Project Page](https://germanftv.github.io/ParallaxICB.github.io/) | [Paper](https://link.springer.com/chapter/10.1007/978-3-031-31435-3_19) | [arXiv](https://arxiv.org/abs/2303.09334) 
 
 [![Project Page](https://img.shields.io/badge/Project%20Page-ParallaxICB-blue)](https://germanftv.github.io/ParallaxICB.github.io/)
+[![Paper](https://img.shields.io/badge/Springer-Link-yellowgreen)](https://link.springer.com/chapter/10.1007/978-3-031-31435-3_19)
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2303.09334)
 
 ### [German F. Torres](https://germanftv.github.io/) and [Joni Kämäräinen](https://webpages.tuni.fi/vision/public_pages/JoniKamarainen/index.html)
@@ -98,9 +99,10 @@ where `$CMD`, `$DATASET`, and `$BLUR_MODEL` denote the same variables as in `mai
 If you find our work useful in your research, please cite:
 
     @inproceedings{torres2023parallaxicb,
-        author = {Torres, German F. and Kämäräinen, Joni-Kristian},
-        title = {Depth-Aware Image Compositing Model for Parallax Camera Motion Blur},
-        booktitle = {Proceedings of the 22nd Scandinavian Conference on Image Analysis (SCIA)},
-        month = {April},
-        year = {2023}
+        title={Depth-Aware Image Compositing Model for Parallax Camera Motion Blur},
+        author={Torres, German F and K{\"a}m{\"a}r{\"a}inen, Joni},
+        booktitle={Image Analysis: 23rd Scandinavian Conference, SCIA 2023, Sirkka, Finland, April 18--21, 2023, Proceedings, Part I},
+        pages={279--296},
+        year={2023},
+        organization={Springer}
     }
